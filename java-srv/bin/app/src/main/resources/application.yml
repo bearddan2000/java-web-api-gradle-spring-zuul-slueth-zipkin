@@ -1,0 +1,15 @@
+ribbon:
+  eureka:
+    enabled: false
+
+spring:
+  application:
+    name: "zipnik-sleuth-example"
+  zipkin:
+    baseUrl: "http://zipkin-srv:9411"
+    discoveryClientEnabled: false
+
+zuul:
+  routes:
+    api:
+      url: "http://nodejs-srv:3000"

@@ -1,0 +1,19 @@
+version: '3'
+services:
+
+  zipkin-srv:
+    image: openzipkin/zipkin
+    ports:
+      - "80:9411"
+
+  nodejs-srv:
+    build: nodejs-srv
+    depends_on:
+      - zipkin-srv
+
+  java-srv:
+    build: java-srv
+    ports:
+      - "81:8080"
+    depends_on:
+      - nodejs-srv
